@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Gifs</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="gif">
+        <h1>Gif of the day</h1>
+        <% if(locals.data){ %>
+        <img src="<%= data.firstGif %>" />
+        <div class="gif-container">
+          <img src="<%= data.responseGif %>" />
+          <form action="/getRandomGifs" method="POST">
+            <label for="gifs">
+              <button id="gifs" type="submit">Get Random Gif</button>
+            </label>
+          </form>
+        </div>
+        <% }else{ %>
+        <div class="error">
+          <h2><%= data.error %></h2>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
